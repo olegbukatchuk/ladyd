@@ -14,17 +14,6 @@ docker run -d \
     cron
 ```
 
-### Use with docker-compose
-
-1. Figure out which network name used for your docker-compose containers
-	* use `docker network ls` to see existing networks
-	* if your `docker-compose.yaml` is in `my_dir` directory, you probably has network `my_dir_default`
-	* otherwise [read the docker-compose docs](https://docs.docker.com/compose/networking/)
-2. Add `dockerargs` to your docker-cron `config.json`
-	* use `--network NETWORK_NAME` to connect new container into docker-compose network
-	* use `--rm --name NAME` to use named container
-	* e.g. `"dockerargs": "--network my_dir_default --rm --name my-cron-job"`
-
 ### config.json
 - `name`: Human readable name that will be used as the job filename. Will be converted into a slug. **Optional**
 - `comment`: Comments to be included with crontab entry. **Optional**
@@ -38,6 +27,17 @@ docker run -d \
 - `onstart`: Run the command on `cron` container start, set to `true`. **Optional**, defaults to false.
 
 See [`config.sample.json`](https://github.com/olegbukatchuk/ladyd/blob/master/config.sample.json) for examples.
+
+### Use with docker-compose
+
+1. Figure out which network name used for your docker-compose containers
+	* use `docker network ls` to see existing networks
+	* if your `docker-compose.yaml` is in `my_dir` directory, you probably has network `my_dir_default`
+	* otherwise [read the docker-compose docs](https://docs.docker.com/compose/networking/)
+2. Add `dockerargs` to your docker-cron `config.json`
+	* use `--network NETWORK_NAME` to connect new container into docker-compose network
+	* use `--rm --name NAME` to use named container
+	* e.g. `"dockerargs": "--network my_dir_default --rm --name my-cron-job"`
 
 ## Docker Hub
 
