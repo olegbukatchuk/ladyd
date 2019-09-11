@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  app:
+    image: alpine:3.5
+    restart: always
+    command: "sh -c 'while :; do sleep 1; done'"
+
+  cron:
+    build: .
+    restart: always
+    volumes:
+     - "/var/run/docker.sock:/var/run/docker.sock:ro"
+     - "./config.json:/opt/crontab/config.json:rw"
