@@ -6,11 +6,13 @@ This is `cron` in `docker` with `json` configuration file. A simple wrapper over
 ### Command Line
 
 ```bash
-docker build -t cron .
+git clone git@github.com:olegbukatchuk/ladyd.git
+cd ladyd/
+docker build -t ladyd .
 docker run -d \
     -v /var/run/docker.sock:/var/run/docker.sock:ro \
-    -v /path/to/config/dir:/opt/cron:rw \
-    -v /path/to/logs:/var/log/cron:rw \
+    -v ./config.json:/opt/crontab/config.json:rw \
+    -v ./ladyd.log:/var/log/cron:rw \
     cron
 ```
 
