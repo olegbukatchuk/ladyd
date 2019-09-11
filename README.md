@@ -1,5 +1,5 @@
 # ladyd
-This is **cron in docker with json** configuration file). A simple wrapper over `docker` to all complex cron job to be run in other containers.
+This is `cron` in `docker` with `json` configuration file. A simple wrapper over `docker` to all complex cron job to be run in other containers.
 
 ## How to use
 
